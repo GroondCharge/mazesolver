@@ -46,7 +46,7 @@ class Line():
 
 
 class Cell():
-    def __init__(self, window):
+    def __init__(self, window = None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -62,19 +62,27 @@ class Cell():
 
         self._win = window
 
-    def draw(self, x, y):
-        self._x1 = x - self.width
-        self._y1 = y + self.width
-        self._x2 = x + self.width
-        self._y2 = y - self.width
+    def draw(self, x1, y1, x2, y2):
+        self._x1 = x1
+        self._y1 = y1
+        self._x2 = x2
+        self._y2 = y2
         if self.has_left_wall:
-            self._win.draw_line(Line(Point(self._x1, self._y1), Point(self._x1, self._y2)), "red")
+            self._win.draw_line(Line(Point(self._x1, self._y1), Point(self._x1, self._y2)), "black")
+        else:
+            self._win.draw_line(Line(Point(self._x1, self._y1), Point(self._x1, self._y2)), "white")
         if self.has_right_wall:
-            self._win.draw_line(Line(Point(self._x2, self._y1), Point(self._x2, self._y2)), "red")
+            self._win.draw_line(Line(Point(self._x2, self._y1), Point(self._x2, self._y2)), "black")
+        else:
+            self._win.draw_line(Line(Point(self._x2, self._y1), Point(self._x2, self._y2)), "white")
         if self.has_top_wall:
-            self._win.draw_line(Line(Point(self._x1, self._y1), Point(self._x2, self._y1)), "red")
+            self._win.draw_line(Line(Point(self._x1, self._y1), Point(self._x2, self._y1)), "black")
+        else:
+            self._win.draw_line(Line(Point(self._x1, self._y1), Point(self._x2, self._y1)), "white")
         if self.has_bottom_wall:
-            self._win.draw_line(Line(Point(self._x1, self._y2), Point(self._x2, self._y2)), "red")
+            self._win.draw_line(Line(Point(self._x1, self._y2), Point(self._x2, self._y2)), "black")
+        else:
+            self._win.draw_line(Line(Point(self._x1, self._y2), Point(self._x2, self._y2)), "white")
     def draw_move(self, to_cell, undo = False):
         colour = "gray"
         if undo == False:
