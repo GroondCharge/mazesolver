@@ -10,7 +10,9 @@ def main():
     #win.wait_for_close()
     celica1 = Cell(win)
     celica1.draw(399, 499)
-    celica1.draw(699, 200)
+    celica2 = Cell(win)
+    celica2.draw(699, 200)
+    celica1.draw_move(celica2, True)
     win.wait_for_close()
 main()
 

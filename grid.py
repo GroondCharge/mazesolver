@@ -7,7 +7,7 @@ class Window():
         self.root.minsize(width, height)
         self.root.maxsize(width, height)
         self.root.title("testni naslov")
-        self.widget = Canvas(self.root, bg = "gray", height = height, width = width)
+        self.widget = Canvas(self.root, bg = "white", height = height, width = width)
         self.widget.pack(fill = BOTH, expand = 1)
         self.running = False
         self.root.protocol("WM_DELETE_WINDOW", self.close)
@@ -49,8 +49,8 @@ class Cell():
     def __init__(self, window):
         self.has_left_wall = True
         self.has_right_wall = True
-        self.has_top_wall = False
-        self.has_bottom_wall = False
+        self.has_top_wall = True
+        self.has_bottom_wall = True
         
         self.width = 5
 
@@ -75,4 +75,11 @@ class Cell():
             self._win.draw_line(Line(Point(self._x1, self._y1), Point(self._x2, self._y1)), "red")
         if self.has_bottom_wall:
             self._win.draw_line(Line(Point(self._x1, self._y2), Point(self._x2, self._y2)), "red")
+    def draw_move(self, to_cell, undo = False):
+        colour = "gray"
+        if undo == False:
+            colour = "red"
+        self._win.draw_line(Line(Point(((self._x1 + self._x2)/2), (self._y1 + self._y2)/2),
+                                 Point((to_cell._x1 + to_cell._x2)/2, (to_cell._y1 + to_cell._y2)/2)),
+                            colour)
 
