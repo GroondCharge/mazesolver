@@ -52,8 +52,7 @@ class Cell():
         self.has_top_wall = True
         self.has_bottom_wall = True
         
-        self.width = 5
-
+        self.visited = False
 
         self._x1 = -1
         self._x2 = -1

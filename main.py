@@ -13,7 +13,7 @@ def main():
     #celica2 = Cell(win)
     #celica2.draw(200, 200, 210, 210)
     #celica1.draw_move(celica2, True)
-    the_maze = Maze(20, 20, 30, 30, 20, 20, win)
+    the_maze = Maze(10, 10, 30,30, 20, 20, win)
     win.wait_for_close()
 main()
 
